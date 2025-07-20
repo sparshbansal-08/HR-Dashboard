@@ -15,7 +15,7 @@ export default function LoginPage() {
 const router = useRouter();
       const [text] = useTypewriter({
 
-    words:  ['HR Dashboard', 'Employee Manager', 'Performance Tracker', 'Smart Payroll'],
+    words:  ['HR Dashboard', 'Employee Manager', 'Performance Tracker',  'Smart Dashboard'],
     loop: true,
     delaySpeed:  2000,
   });

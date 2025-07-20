@@ -67,7 +67,7 @@ const [currentPage, setCurrentPage] = useState(1);
     currentPage * usersPerPage
   );
   const handleAddUser = (newUser) => {
-    const nameParts = newUser.name.trim().split(' ');
+    const nameParts =  newUser.name.trim().split(' ');
     const firstName = nameParts[0] || '';
     const lastName = nameParts.slice(1).join(' ') || '';
 
@@ -168,14 +168,14 @@ const [currentPage, setCurrentPage] = useState(1);
 
           <button
             onClick={() => setIsModalOpen(true)}
-            className="flex items-center gap-2 bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-white px-4 py-2 rounded-xl transition hover:shadow-[0_0_20px_#0ff]"
+            className="flex items-center gap-2 bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-white px-4 py-2 rounded-xl transition hover:shadow-[0_0_22px_#0ff]"
           >
             <FaPlusCircle /> Add User
           </button>
 
           <Link
             href="/analytics"
-            className="flex items-center gap-2 bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-white px-4 py-2 rounded-xl transition hover:shadow-[0_0_20px_#0ff]"
+            className="flex items-center gap-2 bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-white px-4 py-2 rounded-xl transition hover:shadow-[0_0_22px_#0ff]"
           >
             <FaChartBar /> View Analytics
           </Link>
