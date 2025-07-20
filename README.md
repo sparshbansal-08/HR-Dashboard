@@ -122,6 +122,9 @@ Password: admin
 - ✅ Analytics with department-wise ratings
 - ✅ Zustand for state management
 - ✅ Authentication with NextAuth.js
+- ✅ Paginate
+- ✅ Create User
+- ✅ Animations
 - ✅ Reusable Components (Card, Modal, Button, Badge, etc.)
 - ✅ Mobile Responsive Design
 - ✅ Custom Hooks (`useBookmarks`, `useSearch`)
