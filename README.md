@@ -1,36 +1,130 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 💼 HR Dashboard with Next.js
 
-## Getting Started
+A feature-rich HR Dashboard built using **Next.js App Router**, **Zustand**, **NextAuth.js**, **Chart.js**, and **Tailwind CSS**. This app displays a searchable and filterable list of employees, bookmark management, performance analytics, and dynamic employee profiles.
 
-First, run the development server:
+---
+
+## ⚙️ Installation & Setup
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/sparshbansal-08/HR-Dashboard.git
+cd hr-dashboard
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 4. Login credentials
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Use the following mock credentials to log in:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+Username: admin
+Password: admin
+```
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔗 Live Preview
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+[🚀 View Live Demo](https://hr-dashboard-ten-wine.vercel.app/)
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📸 Screenshots
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Pre-login Page | Login Page | Dashboard | Analytics | Mobile View |
+|----------------|------------|-----------|-----------|-------------|
+| ![Pre-login](./public/screenshots/prelogin.png) | ![Login](./public/screenshots/login.png) | ![Dashboard](./public/screenshots/dashboard.png) | ![Analytics](./public/screenshots/analytics.png) | ![Mobile](./public/screenshots/mobile.jpg) |
+
+
+---
+
+## 🔧 Tech Stack
+
+- **React** with **Next.js App Router**
+- **Tailwind CSS** for responsive, utility-first UI
+- **JavaScript (ES6+)**
+- **Zustand** for state management
+- **Chart.js** for analytics visualization
+- **NextAuth.js** for authentication
+
+---
+
+## 🎯 Features
+
+### 🏠 Dashboard Homepage (`/`)
+- Fetches employee data from `dummyjson.com`
+- Displays employee cards with:
+  - Full Name, Email, Age, Department (mocked)
+  - ⭐ Performance Rating (1–5 stars)
+  - 📍 Actions: View, Bookmark, Promote
+
+### 🔍 Search & Filter
+- Search users by Name, Email, or Department
+- Multi-select filters:
+  - Department
+  - Performance Rating
+
+### 👤 Dynamic User Profile (`/employee/[id]`)
+- Detailed info:
+  - Address, Phone, Bio, Performance History
+- Tabbed Interface:
+  - **Overview** – Basic Info & Stats
+  - **Projects** – Mock Projects
+  - **Feedback** – Add/View Feedback (UI Only)
+- Smooth animated transitions between tabs
+
+### 📌 Bookmarks Page (`/bookmarks`)
+- View all bookmarked employees
+- Actions:
+  - Remove from bookmarks
+  - Promote / Assign to Project (UI only)
+
+### 📊 Analytics Page (`/analytics`)
+- 📈 Average rating by department (Chart.js)
+- 📉 Bookmarked employees over time (mocked)
+- Server-side rendering for better performance
+
+### 🔐 Authentication
+- Login with **NextAuth.js**
+- Simple mock credentials (`admin / admin`)
+- Optional route protection for sensitive pages
+
+---
+
+## ✅ Features Implemented
+
+- ✅ Dashboard with employee cards
+- ✅ Search & multi-filter
+- ✅ Dynamic route `/employee/[id]`
+- ✅ Tabbed layout for detailed profile
+- ✅ Bookmark manager
+- ✅ Analytics with department-wise ratings
+- ✅ Zustand for state management
+- ✅ Authentication with NextAuth.js
+- ✅ Reusable Components (Card, Modal, Button, Badge, etc.)
+- ✅ Mobile Responsive Design
+- ✅ Custom Hooks (`useBookmarks`, `useSearch`)
+- ✅ Component-level loading and error states
+- ✅ Clean, modular code structure
+
+
+---
+
+
+## ✨ Credits
+
+Built with ❤️ by Sparsh Bansal using the [Next.js App Router](https://nextjs.org/docs/app).
