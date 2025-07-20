@@ -101,7 +101,14 @@ Password: admin
 ### 🔐 Authentication
 - Login with **NextAuth.js**
 - Simple mock credentials (`admin / admin`)
-- Optional route protection for sensitive pages
+
+---
+
+### ⭐️ Bonus
+- 🔏 Authentication (NextAuth.js)
+- 👤 Add a “Create User” modal 
+- 📃 Pagination
+- 🪄 Animate content transitions (Framer Motion)
 
 ---
 
