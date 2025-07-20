@@ -22,10 +22,14 @@ export const authOptions = {
       },
     }),
   ],
-  secret: process.env.NEXTAUTH_SECRET, 
+
+  // ✅ Hardcoded secret (use only for development/testing)
+  secret: "mS5+H87m6rVKYvZJ8M9R6WzQnU5pK7F1A3PqkDfV8gDQ=",
+
   pages: {
     signIn: "/login",
   },
+
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
