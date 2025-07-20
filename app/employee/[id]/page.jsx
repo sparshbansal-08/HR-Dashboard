@@ -1,33 +1,31 @@
-// app/employee/[id]/page.jsx
+
+
 'use client';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { use } from 'react';
 import { useSession } from 'next-auth/react';
-import { motion, AnimatePresence } from 'framer-motion';
+
+import { motion, AnimatePresence } 
+from 'framer-motion';
 import StarRating from '@/components/StarRating';
 import Badge from '@/components/Badge';
 import { fetchUserById } from '@/lib/api';
 import { mockBio, mockPerformanceHistory } from '@/lib/mockData';
 
-export async function generateStaticParams() {
-  // Generate static params for IDs 1 to 20, matching fetchUsers limit from app/page.jsx
-  const ids = Array.from({ length: 20 }, (_, i) => ({ id: (i + 1).toString() }));
-  return ids;
-  // Optionally, fetch real IDs if an API is available:
-  // const response = await fetch('https://your-api/employees');
-  // const employees = await response.json();
-  // return employees.map(emp => ({ id: emp.id.toString() }));
-}
+
 
 export default function EmployeePage({ params }) {
-  const { data: session, status } = useSession();
+    const { data: session, status } = useSession();
   const router = useRouter();
-  const { id } = params; // Use params directly from static generation
+  const unwrappedParams = use(params);
+  const { id } = unwrappedParams;
 
   const [user, setUser] = useState(null);
   const [activeTab, setActiveTab] = useState('overview');
 
   useEffect(() => {
+
     if (status === 'loading') return;
     if (!session) {
       router.push('/login');
@@ -36,6 +34,7 @@ export default function EmployeePage({ params }) {
 
     async function loadUser() {
       const data = await fetchUserById(id);
+
       if (data) {
         setUser({
           ...data,
@@ -45,6 +44,7 @@ export default function EmployeePage({ params }) {
       } else {
         router.push('/');
       }
+
     }
     loadUser();
   }, [id, router, session, status]);
@@ -70,13 +70,14 @@ export default function EmployeePage({ params }) {
   const tabs = [
     { id: 'overview', label: 'Overview', content: <Overview user={user} /> },
     { id: 'projects', label: 'Projects', content: <Projects /> },
+
     { id: 'feedback', label: 'Feedback', content: <Feedback /> },
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#141e30] to-[#243b55] p-6 relative text-white overflow-hidden">
       <div className="absolute -top-20 -left-20 w-80 h-80 bg-purple-500/30 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-0 right-0 w-72 h-72 bg-cyan-400/20 rounded-full blur-2xl animate-pulse" />
+          <div className="absolute bottom-0 right-0 w-72 h-72 bg-cyan-400/20 rounded-full blur-2xl animate-pulse" />
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: -30 }}
@@ -92,7 +93,7 @@ export default function EmployeePage({ params }) {
             <p>Age: {user.age}</p>
             <p>Department: {user.department}</p>
             <p>Address: {user.address?.address || 'N/A'}</p>
-            <p>Phone: {user.phone || 'N/A'}</p>
+            <p>Phone:  {user.phone || 'N/A'}</p>
             <p>Bio: {user.bio}</p>
             <div className="flex items-center gap-4">
               <StarRating rating={user.rating} />
@@ -113,7 +114,7 @@ export default function EmployeePage({ params }) {
                 </button>
               ))}
             </div>
-            <AnimatePresence mode="wait">
+            <AnimatePresence  mode="wait">
               <motion.div
                 key={activeTab}
                 initial={{ opacity: 0, y: 20 }}
@@ -126,17 +127,21 @@ export default function EmployeePage({ params }) {
               </motion.div>
             </AnimatePresence>
           </div>
+
         </motion.div>
       </div>
     </div>
   );
+
 }
+
 
 function Overview({ user }) {
   return (
     <div className="bg-white/10 border border-white/20 backdrop-blur-lg rounded-xl p-4">
       <h3 className="text-lg font-semibold text-cyan-300 drop-shadow-md mb-2">Performance History</h3>
       <ul className="space-y-2 text-white/80">
+        
         {user.performanceHistory.map((entry, index) => (
           <li key={index}>
             {entry.date}: {entry.rating} stars - {entry.comment}
