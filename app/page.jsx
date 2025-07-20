@@ -122,3 +122,125 @@ const [currentPage, setCurrentPage] = useState(1);
       </div>
     );
   }
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-[#141e30] to-[#243b55] p-6 relative text-white overflow-hidden">
+     
+      <div className="absolute -top-20 -left-20 w-80 h-80 bg-purple-500/30 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-0 right-0 w-72 h-72 bg-cyan-400/20 rounded-full blur-2xl animate-pulse" />
+
+
+  <motion.h1
+        className="text-4xl lg:text-5xl font-extrabold text-center mb-10 text-cyan-300 drop-shadow-md"
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+      >
+        HR Dashboard
+      </motion.h1>
+
+     
+      <div className="flex flex-col items-center gap-4 mb-6">
+       
+        <div className="relative w-full max-w-xl">
+          <FaSearch className="absolute top-1/2 left-3 transform -translate-y-1/2 text-white/70" />
+          <input
+            type="text"
+            placeholder="Search by name, email, or department..."
+            onChange={(e) => setQuery(e.target.value)}
+            className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-400 transition text-white placeholder-white/70"
+          />
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-4 mt-2">
+          <button
+            onClick={() => setShowFilters((prev) => !prev)}
+            className="flex items-center gap-2 bg-white/10 border border-white/20 text-white px-4 py-2 rounded-xl hover:bg-cyan-400/20 transition"
+          >
+            <FaFilter /> Filter
+
+          </button>
+
+          <Link
+            href="/bookmarks"
+            className="flex items-center gap-2 bg-white/10 border border-white/20 text-cyan-300 px-4 py-2 rounded-xl hover:bg-cyan-400/20 transition"
+          >
+            <FaBookmark /> Bookmarks
+      </Link>
+
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="flex items-center gap-2 bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-white px-4 py-2 rounded-xl transition hover:shadow-[0_0_20px_#0ff]"
+          >
+            <FaPlusCircle /> Add User
+          </button>
+
+          <Link
+            href="/analytics"
+            className="flex items-center gap-2 bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-white px-4 py-2 rounded-xl transition hover:shadow-[0_0_20px_#0ff]"
+          >
+            <FaChartBar /> View Analytics
+          </Link>
+        </div>
+
+
+      <AnimatePresence>
+          {showFilters && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="overflow-hidden mt-4 w-full max-w-3xl"
+            >
+              <FilterDropdown onFilter={setFilters} />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {filteredData?.length === 0 ? (
+        <motion.p
+          className="text-center text-white/80 text-lg mt-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+        >
+          No users found. Try adjusting your filters.
+        </motion.p>
+      ) : (
+        <>
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            {paginatedUsers.map((user) => (
+              <Card key={user.id} user={user} />
+            ))}
+          </motion.div>
+
+      
+          <div className="flex justify-center items-center gap-4 my-4">
+            <button
+              onClick={handlePrevPage}
+              disabled={currentPage === 1}
+              className="px-4 py-2 bg-white/10 border border-white/20 rounded-xl hover:bg-cyan-400/20 text-white disabled:opacity-50 transition"
+            >
+              Previous
+                 </button>
+            <span className="text-white/80">Page {currentPage} of {totalPages}</span>
+            <button
+              onClick={handleNextPage}
+              disabled={currentPage === totalPages}
+              className="px-4 py-2 bg-white/10 border border-white/20 rounded-xl hover:bg-cyan-400/20 text-white disabled:opacity-50 transition"
+            >
+              Next
+            </button>
+
+          </div>
+        </>
+      )}
+
+
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onSubmit={handleAddUser} />
+    </div>
+  );
+}
