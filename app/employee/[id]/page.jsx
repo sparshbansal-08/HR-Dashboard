@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 'use client';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
@@ -10,6 +12,8 @@ import StarRating from '@/components/StarRating';
 import Badge from '@/components/Badge';
 import { fetchUserById } from '@/lib/api';
 import { mockBio, mockPerformanceHistory } from '@/lib/mockData';
+
+
 
 export default function EmployeePage({ params }) {
     const { data: session, status } = useSession();
