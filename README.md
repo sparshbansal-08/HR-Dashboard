@@ -98,7 +98,7 @@ Password: admin
 - 📉 Bookmarked employees over time (mocked)
 - Server-side rendering for better performance
 
-### 🔐 Authentication
+### 🔐 Authentication (`/login`)
 - Login with **NextAuth.js**
 - Simple mock credentials (`admin / admin`)
 
